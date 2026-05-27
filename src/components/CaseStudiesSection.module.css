@@ -1,0 +1,235 @@
+.section {
+  background: #000D12;
+  padding: 80px 0;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+}
+
+/* ── Heading ─────────────────────────────────── */
+.sectionTitle {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+/* ── Stage ───────────────────────────────────── */
+.stage {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+}
+
+/*
+  Active card  → left: 44px; right: 44px  (narrower — under card peeks from sides)
+  Under card   → left: 0;    right: 0     (full width, slides up from below)
+  All animated via CSS transition on left / right / transform / opacity
+*/
+.cardWrap {
+  position: absolute;
+  /* height comes from top + bottom set via inline styles */
+  transition:
+    transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity   0.5s ease,
+    left      0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    right     0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    top       0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    bottom    0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── Card ────────────────────────────────────── */
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  height: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Left image panel */
+.cardLeft {
+  position: relative;
+  overflow: hidden;
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardImgPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, rgba(0, 180, 253, 0.14), rgba(0, 58, 206, 0.22));
+}
+
+/* Right content panel */
+.cardRight {
+  background: #080E18;
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+}
+
+.category {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #00B4FD;
+}
+
+.cardTitle {
+  font-size: clamp(1.5rem, 2.2vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.22;
+  color: var(--color-text);
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brandIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+}
+
+.brandName {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* ── Controls ────────────────────────────────── */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 36px;
+}
+
+.navGroup {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.arrowBtn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid #00B4FD;
+  background: transparent;
+  color: #00B4FD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.arrowBtn:hover:not(:disabled) {
+  background: #00B4FD;
+  color: #000D12;
+}
+
+.arrowBtn:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 180, 253, 0.5);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    width         0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background    0.3s ease,
+    border-radius 0.3s ease;
+}
+
+.dotActive {
+  width: 30px;
+  border-radius: 4px;
+  background: #00B4FD;
+  border-color: #00B4FD;
+}
+
+.viewAll {
+  position: absolute;
+  right: 0;
+}
+
+/* ── Tablet ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .stage {
+    height: 540px;
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+    grid-template-rows: 220px 1fr;
+  }
+
+  .cardRight {
+    padding: 32px 28px;
+  }
+
+  .viewAll {
+    position: static;
+    margin-left: auto;
+  }
+}
+
+/* ── Mobile ──────────────────────────────────── */
+@media (max-width: 600px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .stage {
+    height: 580px;
+  }
+
+  .card {
+    grid-template-rows: 180px 1fr;
+  }
+
+  .cardRight {
+    padding: 24px 20px;
+    gap: 16px;
+  }
+}

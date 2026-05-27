@@ -1,0 +1,152 @@
+.footer {
+  background: #000D12;
+  padding-top: 80px;
+}
+
+/* ── Upper: N7 + content ─────────────────────── */
+.upper {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+/* ── N7 gradient brand text ──────────────────── */
+.brand {
+  font-size: clamp(180px, 25vw, 360px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.88;
+  background: linear-gradient(148deg, #00C8FF 0%, #0060FF 55%, #003ACE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ── Right column ────────────────────────────── */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding-top: 16px;
+}
+
+/* ── Addresses row ───────────────────────────── */
+.addresses {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+.addressCity {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 14px;
+}
+
+.addressText {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* ── Nav columns row ─────────────────────────── */
+.navGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+.navColTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 20px;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  transition: color 0.2s ease;
+}
+
+.navItem svg {
+  color: #00B4FD;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.navItem:hover {
+  color: #00B4FD;
+}
+
+.navItem:hover svg {
+  transform: translateX(3px);
+}
+
+/* ── Copyright bar ───────────────────────────── */
+.bottom {
+  margin-top: 64px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 28px var(--container-px);
+}
+
+.copyright {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* ── Tablet ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .upper {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .brand {
+    font-size: clamp(100px, 28vw, 200px);
+    margin-bottom: 40px;
+  }
+
+  .addresses,
+  .navGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+}
+
+/* ── Mobile ──────────────────────────────────── */
+@media (max-width: 600px) {
+  .footer {
+    padding-top: 60px;
+  }
+
+  .addresses,
+  .navGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .brand {
+    font-size: clamp(80px, 30vw, 160px);
+  }
+}

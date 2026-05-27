@@ -1,0 +1,135 @@
+.section {
+  background: #000D12;
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Large outline "CB7" watermark (right side) ─ */
+.bgText {
+  position: absolute;
+  font-size: clamp(220px, 34vw, 480px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  -webkit-text-stroke: 1.5px rgba(26, 111, 255, 0.18);
+  color: transparent;
+  right: -4%;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* ── Decorative circle outlines ──────────────── */
+.circle1,
+.circle2 {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.circle1 {
+  width: 420px;
+  height: 420px;
+  border: 1px solid rgba(26, 111, 255, 0.1);
+  left: 40%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circle2 {
+  width: 600px;
+  height: 600px;
+  border: 1px solid rgba(26, 111, 255, 0.06);
+  left: 40%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ── Layout ──────────────────────────────────── */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ── Left card ───────────────────────────────── */
+.card {
+  background: rgba(10, 22, 40, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 52px 48px;
+  backdrop-filter: blur(8px);
+}
+
+.heading {
+  font-size: clamp(1.8rem, 3vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 460px;
+}
+
+/* ── Right buttons ───────────────────────────── */
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* ── Tablet ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .circle1 {
+    left: 50%;
+  }
+
+  .circle2 {
+    left: 50%;
+  }
+}
+
+/* ── Mobile ──────────────────────────────────── */
+@media (max-width: 600px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .card {
+    padding: 36px 28px;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  :global(.btn-primary),
+  :global(.btn-secondary) {
+    width: 100%;
+    justify-content: center;
+  }
+}

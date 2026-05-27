@@ -1,0 +1,169 @@
+.section {
+  background: #000D12;
+  padding: 100px 0;
+}
+
+/* ── Two-column layout ───────────────────────── */
+.inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 72px;
+  align-items: start;
+}
+
+/* ── Left column ─────────────────────────────── */
+.leftCol {
+  position: sticky;
+  top: calc(var(--nav-offset) + 32px);
+}
+
+.heading {
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--color-text);
+  margin-bottom: 40px;
+}
+
+/* ── Right column ────────────────────────────── */
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Featured card ───────────────────────────── */
+.featuredCard {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.featuredImage {
+  min-height: 260px;
+  position: relative;
+  overflow: hidden;
+}
+
+.featuredImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.featuredContent {
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #080E18;
+}
+
+/* ── Small cards row ─────────────────────────── */
+.cardsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #080E18;
+}
+
+.cardImg {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  flex: 1;
+}
+
+/* ── Shared card internals ───────────────────── */
+.category {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #00B4FD;
+  font-family: monospace;
+}
+
+.cardTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-text);
+  flex: 1;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.8125rem;
+}
+
+.author {
+  color: var(--color-text-secondary);
+}
+
+.date {
+  color: var(--color-text-muted);
+}
+
+/* ── Read all row ────────────────────────────── */
+.readAllRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ── Tablet ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .leftCol {
+    position: static;
+  }
+
+  .featuredCard {
+    grid-template-columns: 1fr;
+  }
+
+  .featuredImage {
+    min-height: 200px;
+  }
+}
+
+/* ── Mobile ──────────────────────────────────── */
+@media (max-width: 600px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .cardsRow {
+    grid-template-columns: 1fr;
+  }
+}

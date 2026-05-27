@@ -1,0 +1,282 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #000D12;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  width: 100%;
+}
+
+/* ── Two-column grid ─────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  padding-top: calc(var(--nav-offset) + 60px);
+}
+
+/* ── Left copy ────────────────────────────── */
+.copy {
+  animation: fadeUp 0.65s var(--ease) both;
+}
+
+.heading {
+  font-size: clamp(2.2rem, 4.5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: var(--color-text);
+  margin-bottom: 22px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 400px;
+  margin-bottom: 40px;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+
+/* ── Right visual ─────────────────────────── */
+.visual {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  animation: fadeLeft 0.75s var(--ease) 0.12s both;
+}
+
+.visualGlow {
+  position: absolute;
+  width: 520px;
+  height: 420px;
+  border-radius: 50%;
+  background: linear-gradient(103.43deg, #00B4FD -1.02%, #003ACE 83.53%);
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(100px);
+  bottom: -60px;
+  right: -40px;
+  pointer-events: none;
+  filter: blur(80px);
+  opacity: 0.75;
+}
+
+/* ── Three-image composite ────────────────── */
+.mockup {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 660px;
+  /* locks proportions of the composite */
+  aspect-ratio: 620 / 490;
+}
+
+/* Background: woman photo */
+.photoFrame {
+  z-index: 1;
+  border-radius: 18px;
+  width: 70%;
+  height: 60%;
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  overflow: hidden;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Balance card — top right */
+.balanceCard {
+  position: absolute;
+  top: 25%;
+  right: -15%;
+  width: 47%;
+  z-index: 2;
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.18));
+}
+
+/* Activity card — bottom left */
+.activityCard {
+  position: absolute;
+  bottom: 18%;
+  left: 0;
+  width: 53%;
+  z-index: 2;
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.18));
+}
+
+
+.cardImgRight {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cardImgLeft {
+  width: 280px;
+  height: 135px;
+  display: block;
+
+}
+
+/* ── Trusted By ───────────────────────────── */
+.trustedBy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 36px 0 56px;
+  border-top: none;
+  animation: fadeUp 0.7s var(--ease) 0.25s both;
+}
+
+.trustedLabel {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+
+.brandList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.brandItem {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 36px 4px 0;
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.brandItem:hover {
+  opacity: 0.75;
+}
+
+.brandLogo {
+  height: 18px;
+  width: auto;
+  display: block;
+  opacity: 0.55;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.2s ease;
+}
+
+.brandItem:hover .brandLogo {
+  opacity: 0.85;
+}
+
+/* ── Keyframes ────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Tablet ───────────────────────────────── */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding-top: calc(var(--nav-offset) + 48px);
+    padding-bottom: 48px;
+  }
+
+  .subtitle {
+    max-width: 100%;
+  }
+
+  .visual {
+    justify-content: center;
+  }
+
+  .visualGlow {
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 400px;
+    height: 400px;
+  }
+
+  .mockup {
+    max-width: 100%;
+  }
+
+  .trustedBy {
+    gap: 20px;
+  }
+}
+
+/* ── Mobile ───────────────────────────────── */
+@media (max-width: 600px) {
+  .grid {
+    padding-top: calc(var(--nav-offset) + 36px);
+  }
+
+  .cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  :global(.btn-primary),
+  :global(.btn-secondary) {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .trustedBy {
+    gap: 14px;
+  }
+
+  .brandItem {
+    padding: 4px 20px 4px 0;
+  }
+}

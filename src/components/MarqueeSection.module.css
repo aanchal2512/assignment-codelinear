@@ -1,0 +1,49 @@
+.section {
+  background: #ffffff;
+  border-top: 1px solid #E8EFF5;
+  border-bottom: 1px solid #E8EFF5;
+  overflow: hidden;
+  padding: 22px 0;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: scroll 28s linear infinite;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  white-space: nowrap;
+}
+
+.star {
+  flex-shrink: 0;
+}
+
+.brand {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A6FFF;
+  letter-spacing: -0.01em;
+}
+
+.text {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #0A1628;
+  letter-spacing: -0.01em;
+}
+
+.emoji {
+  font-size: 1.25rem;
+  line-height: 1;
+}

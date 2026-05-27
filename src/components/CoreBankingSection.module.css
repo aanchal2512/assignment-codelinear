@@ -1,0 +1,158 @@
+.section {
+  position: relative;
+  background: #000D12;
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+/* ── Large outline "CB7" watermark ─────────── */
+.bgText {
+  position: absolute;
+  font-size: clamp(200px, 36vw, 460px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.055);
+  color: transparent;
+  left: -2%;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+
+/* ── Two-column layout ───────────────────────── */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  display: grid;
+  grid-template-columns: 1fr 1.45fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* ── Left copy ───────────────────────────────── */
+.copy {}
+
+.heading {
+  font-size: clamp(2rem, 3.8vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin-bottom: 40px;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+
+/* ── Right: dashboard visual ─────────────────── */
+.visual {
+  position: relative;
+  /* bleed off the right edge */
+  margin-right: calc(-1 * var(--container-px) - 40px);
+}
+
+.laptopScreen {
+  border: 2px solid rgba(0, 180, 253, 0.7);
+  border-bottom: none;
+  border-radius: 14px 14px 0 0;
+  overflow: hidden;
+  background: #0A1628;
+  box-shadow:
+    0 0 60px rgba(0, 180, 253, 0.1),
+    0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.dashboardImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  min-height: 340px;
+  object-fit: cover;
+}
+
+/* Laptop base / palm-rest */
+.laptopBase {
+  position: relative;
+  height: 26px;
+  background: #0A1628;
+  border: 2px solid rgba(0, 180, 253, 0.7);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  width: calc(100% + 60px);
+  margin-left: -30px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Hinge notch at top center */
+.laptopBase::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 5px;
+  background: #0A1628;
+  border-radius: 0 0 6px 6px;
+}
+
+
+/* ── Tablet ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .bgText {
+    font-size: clamp(140px, 40vw, 280px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    top: 40%;
+  }
+
+  .visual {
+    margin-right: 0;
+  }
+
+  .laptopBase {
+    width: calc(100% + 40px);
+    margin-left: -20px;
+  }
+}
+
+/* ── Mobile ──────────────────────────────────── */
+@media (max-width: 600px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .cta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  :global(.btn-primary) {
+    width: 100%;
+    justify-content: center;
+  }
+}

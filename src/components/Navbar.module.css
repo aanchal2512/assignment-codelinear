@@ -1,0 +1,211 @@
+/* ── Floating pill navbar ───────────────────── */
+.header {
+  position: fixed;
+  top: var(--nav-top);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 716px;
+  max-width: calc(100% - 32px);
+  height: 47px;
+  background-color: #2F2F2FB2;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: box-shadow 0.3s var(--ease);
+}
+
+.scrolled {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.40);
+}
+
+/* Three-column grid: logo | nav (centered) | actions */
+.container {
+  height: 100%;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+/* ── Logo ──────────────────────────────────── */
+.logo {
+  font-size: 1.1875rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--color-text);
+  justify-self: start;
+}
+
+/* ── Desktop nav ───────────────────────────── */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  padding: 7px 14px;
+  border-radius: 6px;
+  transition: background-color 0.18s ease;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.chevron {
+  opacity: 0.6;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.navLink:hover .chevron {
+  transform: translateY(1px);
+}
+
+/* ── Actions ───────────────────────────────── */
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.demoBtn {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  padding: 8px 20px;
+  border: 1px solid #E9F4F9;
+  border-radius: 6px;
+  background: transparent;
+  white-space: nowrap;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.demoBtn:hover {
+  background-color: #ffffff;
+  color: #003ACE;
+  border-color: #ffffff;
+}
+
+/* ── Hamburger ─────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+}
+
+.bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transform-origin: center;
+  transition: transform 0.25s var(--ease), opacity 0.2s ease;
+}
+
+.barTop { transform: translateY(7px) rotate(45deg); }
+.barMid { opacity: 0; transform: scaleX(0); }
+.barBot { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile menu — drops below the pill ───── */
+.mobileMenu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background-color: var(--color-nav-bg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.35s var(--ease), opacity 0.25s ease;
+}
+
+.mobileMenuOpen {
+  max-height: 380px;
+  opacity: 1;
+}
+
+.mobileLink {
+  padding: 13px 24px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.mobileLink:hover {
+  color: var(--color-text);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.mobileDemoBtn {
+  margin: 12px 24px 16px;
+  padding: 12px 20px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  border: 1px solid #E9F4F9;
+  border-radius: 6px;
+  background: transparent;
+  text-align: center;
+  transition: background-color 0.18s ease;
+}
+
+.mobileDemoBtn:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr auto;
+  }
+
+  .nav,
+  .demoBtn {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobileMenu {
+    display: flex;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    width: calc(100% - 32px);
+    border-radius: 10px;
+  }
+}
